@@ -10,5 +10,7 @@ public interface IUniversiteService {
     void ajouteUniversite(Universite u);
     void updateUniversite(Universite u);
     void deleteUniversite(Integer id);
+     void assignUniversiteToDepartement(Integer idUniversite, Integer
+            idDepartement);
 
 }

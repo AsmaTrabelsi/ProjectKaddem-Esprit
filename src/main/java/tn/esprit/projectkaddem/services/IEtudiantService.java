@@ -10,4 +10,10 @@ public interface IEtudiantService {
     void ajouteEtudiant(Etudiant e);
     void updateEtudiant(Etudiant e);
     void deleteEtudiant(Integer id);
+     void assignEtudiantToDepartement (Integer etudiantId, Integer
+            departementId) ;
+    Etudiant addAndAssignEtudiantToEquipeAndContract(Etudiant e, Integer idContrat,
+                                                     Integer idEquipe);
+
+    List<Etudiant> getEtudiantsByDepartement (Integer idDepartement);
 }

@@ -2,7 +2,10 @@ package tn.esprit.projectkaddem.services;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.util.Assert;
+import tn.esprit.projectkaddem.entites.Departement;
 import tn.esprit.projectkaddem.entites.Universite;
+import tn.esprit.projectkaddem.repositories.DepartementRepository;
 import tn.esprit.projectkaddem.repositories.UniversiteRepository;
 
 import java.util.List;
@@ -11,6 +14,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class IUniversiteServiceImp implements IUniversiteService{
     private final UniversiteRepository universiteRepository;
+    private final DepartementRepository departementRepository;
     @Override
     public List<Universite> getAllUniversite() {
         return universiteRepository.findAll();
@@ -35,5 +39,17 @@ public class IUniversiteServiceImp implements IUniversiteService{
     @Override
     public void deleteUniversite(Integer id) {
     universiteRepository.deleteById(id);
+    }
+
+    @Override
+    public void assignUniversiteToDepartement(Integer idUniversite, Integer idDepartement) {
+        Departement departement = departementRepository.findById(idDepartement).orElse(null);
+        Universite universite = universiteRepository.findById(idUniversite).orElse(null);
+
+        Assert.notNull(departement,"departement not found");
+        Assert.notNull(universite,"universite not found");
+
+        universite.getDepartements().add(departement);
+        universiteRepository.save(universite);
     }
 }

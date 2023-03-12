@@ -12,4 +12,6 @@ public interface IEquipeService {
     void deleteEquipe(Integer id);
 
 
+
+
 }

@@ -24,8 +24,10 @@ public class Etudiant {
     @ManyToOne
     @JsonIgnore
     private  Departement departement;
+    @JsonIgnore
     @OneToMany(mappedBy = "etudiant")
     private List<Contrat> contrats;
+    @JsonIgnore
     @ManyToMany
     private List<Equipe> equipes;
 }

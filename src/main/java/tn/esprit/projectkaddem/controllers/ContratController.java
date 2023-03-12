@@ -37,5 +37,11 @@ public class ContratController {
     public void update(@RequestBody Contrat c){
         iContratService.updateContrat(c);
     }
+    @PostMapping("/{nomE}/{prenomE}")
+    public Contrat affectContratToEtudiant(@RequestBody Contrat ce, @PathVariable String nomE,@PathVariable String prenomE) {
+        return iContratService.affectContratToEtudiant(ce, nomE, prenomE);
+    }
 
-}
+
+
+    }
