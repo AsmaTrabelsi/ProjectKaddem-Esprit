@@ -1,5 +1,6 @@
 package tn.esprit.projectkaddem.entites;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -21,6 +22,7 @@ public class Etudiant {
     @Enumerated(EnumType.STRING)
     private Option option;
     @ManyToOne
+    @JsonIgnore
     private  Departement departement;
     @OneToMany(mappedBy = "etudiant")
     private List<Contrat> contrats;
