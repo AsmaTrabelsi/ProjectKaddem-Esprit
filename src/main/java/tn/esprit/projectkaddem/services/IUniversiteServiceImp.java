@@ -52,4 +52,11 @@ public class IUniversiteServiceImp implements IUniversiteService{
         universite.getDepartements().add(departement);
         universiteRepository.save(universite);
     }
+
+    @Override
+    public List<Departement> retrieveDepartementsByUniversite(Integer idUniversite) {
+        Universite universite = universiteRepository.findById(idUniversite).orElse(null);
+        Assert.notNull(universite, "university not found");
+        return universite.getDepartements();
+    }
 }
