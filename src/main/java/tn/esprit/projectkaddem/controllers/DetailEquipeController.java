@@ -1,6 +1,7 @@
 package tn.esprit.projectkaddem.controllers;
 
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.projectkaddem.entites.DetailEquipe;
@@ -8,6 +9,7 @@ import tn.esprit.projectkaddem.services.IDetailEquipeService;
 
 import java.util.List;
 
+@Tag(name = "Detail Equipe Management")
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("detailEquipe")

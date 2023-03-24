@@ -1,5 +1,6 @@
 package tn.esprit.projectkaddem.controllers;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.projectkaddem.entites.Departement;
@@ -8,6 +9,7 @@ import tn.esprit.projectkaddem.services.IUniversiteService;
 
 import java.util.List;
 
+@Tag(name = "Universte Management")
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("universite")
