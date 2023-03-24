@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import tn.esprit.projectkaddem.entites.Contrat;
 import tn.esprit.projectkaddem.services.IContratService;
 
+import java.util.Date;
 import java.util.List;
 
 @Tag(name = "Contrat Management")
@@ -44,6 +45,11 @@ public class ContratController {
         return iContratService.affectContratToEtudiant(ce, nomE, prenomE);
     }
 
+    @GetMapping("/{startDate}/{endDate}")
+    public Integer nbContratsValides(@PathVariable Date startDate,@PathVariable Date endDate) {
+
+        return iContratService.nbContratsValides(startDate,endDate);
+    }
 
 
     }

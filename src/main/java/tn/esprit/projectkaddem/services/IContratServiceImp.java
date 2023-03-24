@@ -8,7 +8,9 @@ import tn.esprit.projectkaddem.entites.Etudiant;
 import tn.esprit.projectkaddem.repositories.ContratRepository;
 import tn.esprit.projectkaddem.repositories.EtudiantRepository;
 
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 @RequiredArgsConstructor
 @Service
@@ -52,5 +54,16 @@ public class IContratServiceImp implements IContratService{
             contratRepository.save(ce);
         }
         return ce;
+    }
+
+    @Override
+    public Map<String, Float> getMontantContartEntreDeuxDate(int idUniv, Date startDate, Date endDate) {
+        return null;
+    }
+
+    @Override
+    public Integer nbContratsValides(Date startDate, Date endDate) {
+        Integer nbContrat = contratRepository.findByDateDebutContratLessThanEqualAndDateFinContratGreaterThanEqualAndArchiveIsFalse(startDate,endDate).size();
+        return nbContrat;
     }
 }
