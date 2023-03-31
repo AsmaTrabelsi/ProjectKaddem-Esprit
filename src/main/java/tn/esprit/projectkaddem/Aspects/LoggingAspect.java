@@ -11,32 +11,19 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Slf4j
 public class LoggingAspect {
-    @Before("execution(* tn.esprit.projectkaddem..*.*(..))")
+    @Before("execution(* tn.esprit.projectkaddem.services.*.*(..))")
     public void logMethodEntry(JoinPoint joinPoint){
         String name = joinPoint.getSignature().getName();
-        String type = joinPoint.getSignature().getDeclaringTypeName();
+        String className = joinPoint.getTarget().getClass().getSimpleName();
         if(name.startsWith("get")){
-            log.info("entre to method "+name);
+            log.info("entre to method "+name +  " from " +className);
         }
     }
-    @After("execution(* tn.esprit.projectkaddem..*.*(..))")
+    @After("execution(* tn.esprit.projectkaddem.services.*.*(..))")
     public void logMethodExit(JoinPoint joinPoint){
         String name = joinPoint.getSignature().getName();
         String type = joinPoint.getSignature().getDeclaringTypeName();
-
-            log.info("out of method "+name);
-
+            log.info("out of method "+ name);
     }
-
-
-
-
-
-
-
-
-
-
-
 
 }
